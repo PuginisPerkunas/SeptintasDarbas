@@ -1,3 +1,5 @@
+import com.jaunt.NotFound;
+import com.jaunt.ResponseException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,17 +24,17 @@ public class AppStatisticsTest {
     AppStatistics appStatistics = new AppStatistics();
 
     @Test
-    public void checkIfWeCanGetAppNameInStringType(){
+    public void checkIfWeCanGetAppNameInStringType() throws NotFound, ResponseException {
         Assert.assertEquals("AppName",appStatistics.getAppName());
     }
 
     @Test
-    public void checkIfWeCanGetDonwloadsCountNumberInStringType(){
+    public void checkIfWeCanGetDonwloadsCountNumberInStringType() throws NotFound, ResponseException {
         Assert.assertEquals("10",appStatistics.getDownloadsSize());
     }
 
     @Test
-    public void checkIfWeCanGetMainImageUrlInStringFormat(){
+    public void checkIfWeCanGetMainImageUrlInStringFormat() throws NotFound, ResponseException {
         Assert.assertEquals("ImageUrl",appStatistics.getImageUrl());
     }
 
@@ -48,7 +50,7 @@ public class AppStatisticsTest {
 
     @Test
     public void makeFunctionThatReturnAppNameAndDownloadsSize(){
-        Assert.assertEquals("AppName and Downloads",appStatistics.getOneStringInfo("AppName", 10));
+        Assert.assertEquals("AppName and Downloads",appStatistics.getOneStringInfo("AppName", "5"));
     }
 
     @Test

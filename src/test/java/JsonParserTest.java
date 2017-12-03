@@ -2,6 +2,8 @@ import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class JsonParserTest {
     String someUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
     JsonObject jsonObject = new JsonObject();
@@ -40,26 +42,26 @@ public class JsonParserTest {
     @Test
     public void shouldGetJsonRootObjectValue(){
         jsonObject.addProperty("Property","Value");
-        Assert.assertEquals(jsonObject.get("Property").getAsString(), jsonParser.getJsonObjectValue());
+        Assert.assertEquals(jsonObject.get("Property").getAsString(), jsonParser.getJsonObjectValue("string"));
     }
 
     @Test
-    public void shouldGetCountryCodeFromJsonInStringFormat(){
+    public void shouldGetCountryCodeFromJsonInStringFormat() throws IOException {
         Assert.assertEquals("SomeCountryCodeInStringFormat",jsonParser.getCountryCode());
     }
 
     @Test
-    public void shouldGetIpFromJsonInStringFormat(){
+    public void shouldGetIpFromJsonInStringFormat() throws IOException {
         Assert.assertEquals("ip",jsonParser.getIp());
     }
 
     @Test
-    public void shouldGetTimeZoneInfoFromJsonInStringFormat(){
+    public void shouldGetTimeZoneInfoFromJsonInStringFormat() throws IOException {
         Assert.assertEquals("TimeZone",jsonParser.getTimeZone());
     }
 
     @Test
-    public void shouldGetContryNameInfoFromJsonInStringFormat(){
+    public void shouldGetContryNameInfoFromJsonInStringFormat() throws IOException {
         Assert.assertEquals("ContryName",jsonParser.getCountryName());
     }
 }

@@ -1,8 +1,12 @@
+import com.jaunt.NotFound;
+import com.jaunt.ResponseException;
+import com.jaunt.UserAgent;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class WheaterItemTest {
     Object value;
+    UserAgent agent;
     @Test
     public void testIfWeCanCreateWheaterItemClass(){
         WheaterItem wheaterItem = new WheaterItem();
@@ -10,7 +14,7 @@ public class WheaterItemTest {
 
     @Test
     public void canWePassValuesUsingConstructor(){
-        WheaterItem wheaterItem = new WheaterItem(value);
+        WheaterItem wheaterItem = new WheaterItem(agent);
     }
 
     //Create class for testing get'ers
@@ -24,12 +28,12 @@ public class WheaterItemTest {
     }
 
     @Test
-    public void shouldReturnCityNameInStringFormat(){
+    public void shouldReturnCityNameInStringFormat() throws NotFound, ResponseException {
         Assert.assertEquals("CityName",wheaterItem.getCityName());
     }
 
     @Test
-    public void shouldReturnWheaterInformationInStringFormat(){
+    public void shouldReturnWheaterInformationInStringFormat() throws NotFound, ResponseException {
         Assert.assertEquals("WheaterTemp",wheaterItem.getWheaterTemperature());
     }
 
@@ -55,7 +59,7 @@ public class WheaterItemTest {
 
     @Test
     public void writeFunctionThatReturnCityNameAntTemperatureInOneString(){
-        Assert.assertEquals("CityName 5C",wheaterItem.fullInfo("CityName",5));
+        Assert.assertEquals("CityName 5C",wheaterItem.fullInfo("CityName","2"));
     }
 
 }
